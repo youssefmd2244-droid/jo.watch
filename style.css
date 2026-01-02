@@ -1,0 +1,110 @@
+/* الأساسيات */
+body { 
+    margin: 0; 
+    font-family: 'Segoe UI', sans-serif; 
+    background: #0a0a0a; 
+    color: white; 
+    direction: rtl; 
+    overflow-x: hidden; 
+}
+
+/* زر القائمة الذهبي */
+.menu-toggle { 
+    position: fixed; 
+    top: 15px; 
+    right: 15px; 
+    background: #e5a00d; 
+    color: #000; 
+    padding: 10px 15px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    z-index: 10000; 
+}
+
+/* القائمة الجانبية - مع إضافة شريط التحريك (Scroll) */
+.sidebar { 
+    position: fixed; 
+    top: 0; 
+    right: -280px; 
+    width: 270px; 
+    height: 100vh; /* تأخذ طول الشاشة بالكامل */
+    background: #111; 
+    transition: 0.3s ease; 
+    z-index: 9000; 
+    
+    /* تفعيل شريط التحريك */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+/* تحسين شكل شريط التحريك ليصبح ذهبياً ورفيعاً */
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #e5a00d; 
+    border-radius: 10px;
+}
+.sidebar::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.sidebar.active { 
+    right: 0; 
+    box-shadow: -10px 0 30px rgba(0,0,0,0.9); 
+}
+
+/* اللوجو داخل القائمة */
+.logo { 
+    font-size: 24px; 
+    font-weight: bold; 
+    text-align: center; 
+    padding: 70px 10px 20px; 
+}
+.logo span { color: #e5a00d; }
+
+/* الروابط (الأقسام) */
+nav a { 
+    display: block; 
+    color: #ccc; 
+    text-decoration: none; 
+    padding: 15px 20px; 
+    border-bottom: 1px solid #222; 
+    font-size: 16px;
+}
+nav a:hover { background: #222; color: #e5a00d; }
+nav a i { margin-left: 10px; color: #e5a00d; width: 20px; }
+
+/* قسم التواصل - سيظهر الآن عند النزول بالسكروول */
+.contact-section { 
+    background: #181818; 
+    border-top: 2px solid #e5a00d; 
+    padding: 25px 10px; 
+    text-align: center;
+    margin-top: 20px; /* مسافة بسيطة قبل نهاية القائمة */
+}
+
+.social-icons { 
+    display: flex; 
+    justify-content: space-around; 
+    margin-bottom: 15px; 
+}
+.social-icons a { color: white; font-size: 24px; text-decoration: none; }
+.contact-number { color: #e5a00d; font-size: 15px; font-weight: bold; direction: ltr; display: block; }
+
+/* --- باقي تنسيقات الموقع (البحث والأفلام والبوبر) تبقى كما هي لضمان عدم حدوث أخطاء --- */
+
+.search-container { padding: 15px; margin-right: 75px; }
+.search-bar { background: #222; padding: 8px 15px; border-radius: 20px; display: flex; align-items: center; max-width: 300px; }
+.search-bar input { background: none; border: none; color: white; outline: none; width: 100%; margin-right: 8px; }
+
+.movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
+.movie-card { background: #1a1a1a; border-radius: 10px; overflow: hidden; cursor: pointer; border: 1px solid #222; }
+.movie-card img { width: 100%; height: 220px; object-fit: cover; }
+.movie-info { padding: 10px; text-align: center; }
+
+.popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100000; justify-content: center; align-items: center; }
+.popup-box { background: #161616; width: 90%; max-width: 450px; padding: 20px; border-radius: 15px; text-align: center; position: relative; border: 1px solid #e5a00d; max-height: 90vh; overflow-y: auto; }
+.p-img { width: 100%; max-height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+.close-btn { position: absolute; top: 10px; left: 15px; font-size: 30px; color: #e5a00d; cursor: pointer; }
+.p-btn { display: block; background: #e5a00d; color: #000; padding: 12px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 10px; border: none; width: 100%; cursor: pointer; }

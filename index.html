@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jo.watch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">Jo<span>.watch</span></div>
+        <nav>
+            <a href="#"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="#"><i class="fas fa-film"></i> أفلام</a>
+            <a href="#"><i class="fas fa-tv"></i> مسلسلات</a>
+            <a href="#"><i class="fas fa-dragon"></i> أنمي</a>
+            <a href="#"><i class="fas fa-hand-rock"></i> مصارعة</a>
+            <a href="#"><i class="fas fa-microchip"></i> برامج</a>
+            <a href="#"><i class="fas fa-gamepad"></i> ألعاب</a>
+            <a href="#"><i class="fas fa-th-large"></i> تطبيقات</a>
+            <a href="#"><i class="fab fa-android"></i> أندرويد</a>
+        </nav>
+
+        <div class="contact-section">
+            <h4>تواصل مع خدمة العملاء</h4>
+            <div class="social-icons">
+                <a href="https://api.whatsapp.com/send?phone=201094555299" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/youssef_official.c2m" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:youssefmd2244@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:01094555299"><i class="fas fa-phone"></i></a>
+            </div>
+            <p class="contact-number">01094555299</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="search-container">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="بحث عن محتوى...">
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <h2 style="margin-right: 20px; color: #e5a00d;">المحتوى المقترح</h2>
+            <div class="movie-grid">
+                <div class="movie-card" onclick="openDetails()">
+                    <img src="https://scified.com/u/Screenshot_20251108-192119_Chrome.jpg" alt="Predator">
+                    <div class="movie-info">
+                        <h3>Predator: Badlands</h3>
+                        <span>2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="movie-popup" class="popup-overlay">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closeDetails()">&times;</span>
+            
+            <div id="video-container" style="display:none; margin-bottom: 15px;">
+                <iframe src="https://up4fun.top/embed-mrfpstbgmd32.html" 
+                        frameborder="0" marginwidth="0" marginheight="0" 
+                        scrolling="no" width="100%" height="250" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <img id="popup-poster-img" src="https://scified.com/u/Screenshot_20251108-192119_Chrome.jpg" class="p-img">
+            
+            <h3>Predator: Badlands (2025)</h3>
+            <p class="p-story">يقدّم الفيلم تجربة جديدة داخل عالم المفترس على كوكب ناءٍ، حيث يواجه "ديك" مصيراً قاسياً ضد مخلوقات مرعبة.</p>
+            
+            <div class="p-tags">
+                <span>+16 سنة</span>
+                <span>غير مناسب للعائلات ❌</span>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-direction: column;">
+                <button onclick="showVideo()" class="p-btn" style="background: #e5a00d; border:none; cursor:pointer;">اضغط للمشاهدة المباشرة</button>
+                <a href="https://s-delivery35.mxcontent.net/d/7kj1dp1vcz8dpw/c0xjh5iz8s1lx0b36s?ab=0&r=https%3A%2F%2Fm1xdrop.net%2Ff%2F7kj1dp1vcz8dpw" 
+                   target="_blank" class="p-btn" style="background: #333; color: #fff;">تحميل الفيلم مباشرة</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // فتح وإغلاق القائمة الجانبية
+        document.getElementById('mobile-menu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // وظيفة فتح نافذة الفيلم
+        function openDetails() {
+            document.getElementById('movie-popup').style.display = 'flex';
+            // إعادة تصفير النافذة عند فتحها (إخفاء الفيديو وإظهار البوستر)
+            document.getElementById('video-container').style.display = 'none';
+            document.getElementById('popup-poster-img').style.display = 'block';
+        }
+
+        // وظيفة إظهار المشغل (Iframe) عند الضغط على زر المشاهدة
+        function showVideo() {
+            document.getElementById('video-container').style.display = 'block';
+            document.getElementById('popup-poster-img').style.display = 'none';
+        }
+
+        // إغلاق نافذة الفيلم
+        function closeDetails() {
+            document.getElementById('movie-popup').style.display = 'none';
+        }
+
+        // إغلاق أي شيء عند الضغط في الخارج
+        document.addEventListener('click', function(e) {
+            let sidebar = document.getElementById('sidebar');
+            let btn = document.getElementById('mobile-menu');
+            let popup = document.getElementById('movie-popup');
+            
+            if (sidebar && !sidebar.contains(e.target) && !btn.contains(e.target)) {
+                sidebar.classList.remove('active');
+            }
+            
+            if (e.target === popup) {
+                closeDetails();
+            }
+        });
+    </script>
+</body>
+</html>
